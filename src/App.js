@@ -6,6 +6,7 @@ import Products from "./Pages/Products";
 import DashboardTemplate from "./Components/DashboardTemplate";
 import Add from "./Pages/Add";
 import Statistics from "./Pages/Statistics";
+import Users from "./Pages/Users";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="products" element={<Products />} />
           <Route path="statistics" element={<Statistics />} />
           <Route path="add" element={<Add />} />
+          <Route path="users" element={<Users />} />
         </Route>
       </Routes>
     </Router>
