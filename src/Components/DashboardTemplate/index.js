@@ -175,7 +175,7 @@ export default function DashboardTemplate() {
 
     <ListGroup.Item>
     <Link
-    to="/products"
+    to="/users"
     className="d-flex gap-2 text-decoration-none text-black align-items-center"
     >
     <svg
