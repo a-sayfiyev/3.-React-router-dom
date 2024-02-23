@@ -16,7 +16,7 @@ const DashboardTemplateWrapper = styled.section`
     .list-group {
       .list-group-item {
         border-radius: 10px;
-        border: 1px solid #eee !important;
+        border: 1px solid #fffced !important;
         margin-bottom: 10px;
         padding: 0;
 
@@ -25,7 +25,7 @@ const DashboardTemplateWrapper = styled.section`
           color: black;
           display: block;
           padding: 5px 20px;
-          background-color: #ffdc03;
+          background: #fffced;
           border-radius: 10px;
         }
       }
@@ -52,6 +52,19 @@ const DashboardTemplateWrapper = styled.section`
   .site-logo {
     width: 220px;
     margin-bottom: 40px;
+  }
+
+  .logout-btn {
+    background-color: #ffec00;
+    color: black;
+    font-weight: bold;
+    border: none;
+    padding:5px 15px;
+  }
+
+  .logout-btn:hover,
+  .logout-btn:active {
+    background-color: #df3535;
   }
 `;
 
