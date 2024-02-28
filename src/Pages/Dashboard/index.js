@@ -1,45 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setLogin, toggleSidebar } from "../../actions";
 
 export default function Dashboard() {
+  const isLogin = useSelector((state) => state.isLogin);
+  const isSidebarHidden = useSelector((state) => state.isSidebarHidden);
+  const dispatch = useDispatch();
 
-    const initialArizalar = [
-      {
-        firstName: "Akobir Sayfiyev",
-        mealName: "Osh",
-        price: "20 000",
-        amount: "3",
-        overall: "overall price",
-        phone: "90 123 40 41",
-        comment: "Lorem ipsum",
-      },
-      {
-        firstName: "Lorem Ipsumov",
-        mealName: "Osh",
-        price: "20 000",
-        amount: "5",
-        overall: "overall price",
-        phone: "90 123 40 41",
-        comment: "Lorem ipsum",
-      },
-      {
-        firstName: "Ter Stegen",
-        mealName: "Manti",
-        price: "5 000",
-        amount: "10",
-        overall: "overall price",
-        phone: "90 123 40 41",
-        comment: "Lorem ipsum",
-      },
-      {
-        firstName: "Lorem Ipsumov",
-        mealName: "Big Lavash",
-        price: "24 000",
-        amount: "3",
-        overall: "overall price",
-        phone: "90 123 40 41",
-        comment: "Lorem ipsum",
-      },
-    ];
+  const initialArizalar = [
+    {
+      firstName: "Akobir Sayfiyev",
+      mealName: "Osh",
+      price: "20 000",
+      amount: "3",
+      overall: "overall price",
+      phone: "90 123 40 41",
+      comment: "Lorem ipsum",
+    },
+    {
+      firstName: "Lorem Ipsumov",
+      mealName: "Osh",
+      price: "20 000",
+      amount: "5",
+      overall: "overall price",
+      phone: "90 123 40 41",
+      comment: "Lorem ipsum",
+    },
+    {
+      firstName: "Ter Stegen",
+      mealName: "Manti",
+      price: "5 000",
+      amount: "10",
+      overall: "overall price",
+      phone: "90 123 40 41",
+      comment: "Lorem ipsum",
+    },
+    {
+      firstName: "Lorem Ipsumov",
+      mealName: "Big Lavash",
+      price: "24 000",
+      amount: "3",
+      overall: "overall price",
+      phone: "90 123 40 41",
+      comment: "Lorem ipsum",
+    },
+  ];
 
   const [arizalar, setArizalar] = useState(initialArizalar);
   const [filterText, setFilterText] = useState("");
@@ -50,22 +55,20 @@ export default function Dashboard() {
     return (numericPrice * numericAmount).toLocaleString();
   };
 
-    const calculateTotalOverall = () => {
-      const totalOverall = arizalar.reduce((total, ariza) => {
-        const numericPrice = parseInt(ariza.price.replace(/\s/g, ""), 10);
-        const numericAmount = parseInt(ariza.amount, 10);
-        return total + numericPrice * numericAmount;
-      }, 0);
+  const calculateTotalOverall = () => {
+    const totalOverall = arizalar.reduce((total, ariza) => {
+      const numericPrice = parseInt(ariza.price.replace(/\s/g, ""), 10);
+      const numericAmount = parseInt(ariza.amount, 10);
+      return total + numericPrice * numericAmount;
+    }, 0);
 
-      return totalOverall.toLocaleString();
-    };
-
+    return totalOverall.toLocaleString();
+  };
 
   const filteredArizalar = arizalar.filter((ariza) => {
     const fullName = `${ariza.firstName} ${ariza.mealName}`.toLowerCase();
     return fullName.includes(filterText.toLowerCase());
   });
-
 
   return (
     <>

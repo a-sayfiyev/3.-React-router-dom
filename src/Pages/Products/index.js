@@ -1,45 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setLogin, toggleSidebar } from "../../actions";
 
 export default function Products() {
-
-    const initialArizalar = [
-      {
-        firstName: "Akobir Sayfiyev",
-        mealName: "Osh",
-        price: "20 000",
-        amount: "3",
-        overall: "overall price",
-        phone: "90 123 40 41",
-        comment: "Yetkazilgan",
-      },
-      {
-        firstName: "Lorem Ipsumov",
-        mealName: "Osh",
-        price: "20 000",
-        amount: "5",
-        overall: "overall price",
-        phone: "90 123 40 41",
-        comment: "Yetkazilgan",
-      },
-      {
-        firstName: "Ter Stegen",
-        mealName: "Manti",
-        price: "5 000",
-        amount: "10",
-        overall: "overall price",
-        phone: "90 123 40 41",
-        comment: "Yetkazilgan",
-      },
-      {
-        firstName: "Lorem Ipsumov",
-        mealName: "Big Lavash",
-        price: "24 000",
-        amount: "3",
-        overall: "overall price",
-        phone: "90 123 40 41",
-        comment: "Yetkazilgan",
-      },
-    ];
+  const initialArizalar = [
+    {
+      firstName: "Akobir Sayfiyev",
+      mealName: "Osh",
+      price: "20 000",
+      amount: "3",
+      overall: "overall price",
+      phone: "90 123 40 41",
+      comment: "Yetkazilgan",
+    },
+    {
+      firstName: "Lorem Ipsumov",
+      mealName: "Osh",
+      price: "20 000",
+      amount: "5",
+      overall: "overall price",
+      phone: "90 123 40 41",
+      comment: "Yetkazilgan",
+    },
+    {
+      firstName: "Ter Stegen",
+      mealName: "Manti",
+      price: "5 000",
+      amount: "10",
+      overall: "overall price",
+      phone: "90 123 40 41",
+      comment: "Yetkazilgan",
+    },
+    {
+      firstName: "Lorem Ipsumov",
+      mealName: "Big Lavash",
+      price: "24 000",
+      amount: "3",
+      overall: "overall price",
+      phone: "90 123 40 41",
+      comment: "Yetkazilgan",
+    },
+  ];
 
   const [arizalar, setArizalar] = useState(initialArizalar);
   const [filterText, setFilterText] = useState("");
@@ -50,22 +51,23 @@ export default function Products() {
     return (numericPrice * numericAmount).toLocaleString();
   };
 
-    const calculateTotalOverall = () => {
-      const totalOverall = arizalar.reduce((total, ariza) => {
-        const numericPrice = parseInt(ariza.price.replace(/\s/g, ""), 10);
-        const numericAmount = parseInt(ariza.amount, 10);
-        return total + numericPrice * numericAmount;
-      }, 0);
+  const calculateTotalOverall = () => {
+    const totalOverall = arizalar.reduce((total, ariza) => {
+      const numericPrice = parseInt(ariza.price.replace(/\s/g, ""), 10);
+      const numericAmount = parseInt(ariza.amount, 10);
+      return total + numericPrice * numericAmount;
+    }, 0);
 
-      return totalOverall.toLocaleString();
-    };
-
+    return totalOverall.toLocaleString();
+  };
 
   const filteredArizalar = arizalar.filter((ariza) => {
     const fullName = `${ariza.firstName} ${ariza.mealName}`.toLowerCase();
     return fullName.includes(filterText.toLowerCase());
   });
 
+  const isLogin = useSelector((state) => state.isLogin); // Access the isLogin state from Redux
+  const dispatch = useDispatch(); // Get the dispatch function
 
   return (
     <>
