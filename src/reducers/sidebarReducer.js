@@ -1,4 +1,3 @@
-// reducers/sidebarReducer.js
 const sidebarReducer = (state = false, action) => {
   switch (action.type) {
     case "TOGGLE_SIDEBAR":

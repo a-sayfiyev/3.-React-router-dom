@@ -1,4 +1,3 @@
-// reducers/rootReducer.js
 const initialState = {
   isLogin: false,
   isSidebarHidden: false,
